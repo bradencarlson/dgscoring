@@ -1,24 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-        <title>Disk Golf</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="./script.js"></script>
-        <link rel="stylesheet" href="./style.css">
+  <title>Disk Golf</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="./script.js"></script>
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-        <div id="header" class="bg-orange padding-10 flex-h align-v">
-                <div id="title">Disk Golf</div>
-                <div id="side-menu-button" class="inline"><button onClick="toggleSideMenu()">
-                                <img class="button-img" src="./media/hambuger-menu.svg"></button></div>
+  <div id="header" class="bg-orange padding-10 flex-h align-v">
+    <div id="title">Disk Golf</div>
+    <div id="side-menu-button-container" class="inline"><button id="side-menu-button">
+        <img class="button-img" src="./media/hambuger-menu.svg">
+      </button>
+    </div>
+  </div>
+  <div id="sidebar"></div>
+  <div id="main" class="flex-h margin-top-5p">
+    <div id="lookup" class="margin-left-5p width-90p flex-h">
+      <div id="lookup-page" class="width-50p">
+        <h2 id="lookup-title">Par Lookup</h2>
+        <p id="lookup-description">This utility is for looking
+        up the recommended par for a specific hole based on the
+        guidelines to set the par by effective hole length and
+        foliage set forth by the PDGA. Simply enter the stats
+        for the hole you are playing, and select a skill level.
+      </div>
+      <div id="lookup-output" class="width-50p">
+        <div id="par-output-box" class="border-solid-black border-radius-10px 
+          margin-left-5p width-90p">
+          <div id="par-output" class="min-height-100px">
+            <h2 id="par-output-label" class="margin-left-5p">Par</h2>
+            <div id="par" class="width-100p centered">
+              2
+            </div>
+          </div>
         </div>
-        <div id="sidebar"></div>
-        <div id="sidemenu"></div>
-        <div id="main">
-                <div id="lookup">
+      </div>
+    </div>
+  </div>
+  <div id="footer"></div>
 
-                </div>
-        </div>
-        <div id="footer"></div>
+  <script>
+    addClickHandlers()
+  </script>
 </body>
 </html>

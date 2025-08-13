@@ -31,20 +31,39 @@ html, body {
 .bg-orange {
         background: #fca311;
 }
-
 /**************************************************
- * Size Settings
+ * Size/Position Settings
  **************************************************/
 .full-width {
-        width: 100%;
+  width: 100%;
 }
-
+.width-90p {
+  width: 90%;
+}
+.width-50p {
+  width: 50%;
+}
+.min-height-100px {
+  min-height: 100px;
+}
+.margin-left-5p {
+  margin-left: 5%;
+}
+.margin-top-5p {
+  margin-top: 5%;
+}
+.margin-bottom-5p {
+  margin-bottom: 5%;
+}
 
 /**************************************************
  * Display Settings
  **************************************************/
 .inline {
         display: inline;
+}
+.centered {
+  text-align: center;
 }
 
 .flex-h {
@@ -63,6 +82,15 @@ html, body {
 }
 
 
+/**************************************************
+ * Border Settings
+ **************************************************/
+.border-solid-black {
+  border: 1px solid black;
+}
+.border-radius-10px {
+  border-radius: 10px;
+}
 /**************************************************
  * Buttons Settings
  **************************************************/

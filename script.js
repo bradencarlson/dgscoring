@@ -67,8 +67,9 @@ function load() {
         course_holes_element.innerHTML = create_score_card()
 }
 
-function toggleSideMenu() {
+function toggleSideMenu(e) {
         console.log("Function not implemented yet.")
+        console.log(e.target)
 }
 
 function lookUpPar(dist, elev = 0, heavy_foliage = 0, skill = "red") {
@@ -91,3 +92,22 @@ function lookUpPar(dist, elev = 0, heavy_foliage = 0, skill = "red") {
                 return 6
         }
 }
+
+/**************************************************
+ * Event Handlers
+ **************************************************/
+
+function addClickHandlers() {
+        const buttons = document.querySelectorAll("button")
+        for (const button of buttons) {
+                switch(button.id) {
+                        case "side-menu-button":
+                                button.addEventListener("click", toggleSideMenu)
+                                break;
+                        default: 
+                                break;
+                }
+        }
+
+}
+
