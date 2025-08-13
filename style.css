@@ -1,0 +1,72 @@
+html, body {
+        margin: 0;
+        padding: 0;
+}
+
+/**************************************************
+ * Padding Settings
+ **************************************************/
+.padding-0 {
+        padding: 0px;
+}
+.padding-left-10 {
+        padding-left: 10px;
+}
+.padding-right-10 {
+        padding-right: 10px;
+}
+.padding-top-10 {
+        padding-top: 10px;
+}
+.padding-bottom-10 {
+        padding-bottom: 10px;
+}
+.padding-10 {
+        padding: 10px;
+}
+
+/**************************************************
+ * Background Settings
+ **************************************************/
+.bg-orange {
+        background: #fca311;
+}
+
+/**************************************************
+ * Size Settings
+ **************************************************/
+.full-width {
+        width: 100%;
+}
+
+
+/**************************************************
+ * Display Settings
+ **************************************************/
+.inline {
+        display: inline;
+}
+
+.flex-h {
+        display: flex;
+        flex-direction: horizontal;
+        justify-content: space-between;
+}
+
+.flex-v {
+        display: flex;
+        flex-direction: vertical;
+}
+
+.align-v {
+        align-items: center;
+}
+
+
+/**************************************************
+ * Buttons Settings
+ **************************************************/
+.button-img {
+        width: 16px;
+        height: 16px;
+}
