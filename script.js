@@ -50,47 +50,50 @@ class Course {
         }
 }
 
-function create_hole(number) {
-        return "<p>Hole number " + number + "</p>"
-}
-
-function create_score_card() {
-        course_string = ""
-        for (i=1; i<= 9; i = i + 1) {
-                course_string = course_string + create_hole(i) + "\n"
-        }
-        return course_string
-}
-
-function load() {
-        const course_holes_element = document.getElementById('course-holes')
-        course_holes_element.innerHTML = create_score_card()
-}
 
 function toggleSideMenu(e) {
         console.log("Function not implemented yet.")
         console.log(e.target)
 }
 
-function lookUpPar(dist, elev = 0, heavy_foliage = 0, skill = "red") {
-        const s = new SkillLevel(skill)
-        effective_dist = dist + 3*elev;
+function calculate(dist, elev = 0, heavy_foliage = 0, skill = "red") {
+  const s = new SkillLevel(skill)
+  effective_dist = dist + 3*(elev);
 
-        if (!heavy_foliage) {
-                for (i=0; i<s.light_foliage.length ; i = i + 1) {
-                        if (effective_dist < s.light_foliage[i]) {
-                                return i+2
-                        }
-                }
-                return 6
-        } else {
-                for (i=0; i<s.heavy_foliage.length ; i = i + 1) {
-                        if (effective_dist < s.heavy_foliage[i]) {
-                                return i+2
-                        }
-                }
-                return 6
-        }
+  if (!heavy_foliage) {
+    for (i=0; i<s.light_foliage.length ; i = i + 1) {
+      if (effective_dist < s.light_foliage[i]) {
+        return i+2
+      } 
+    }
+    return 6
+  } else {
+    for (i=0; i<s.heavy_foliage.length ; i = i + 1) {
+      if (effective_dist < s.heavy_foliage[i]) {
+        return i+2
+      }
+    }
+    return 6
+  }
+}
+
+function lookUpPar(e) {
+  const dist = document.querySelector("input[id=lookup-distance]")
+  const elev = document.querySelector("input[id=lookup-elevation]")
+  const skill = document.querySelector("select[id=skill-select]")
+  const foliage = document.querySelector("select[id=lookup-foliage]")
+
+  heavy_foliage = foliage.value == "heavy" ? 1 : 0;
+
+  if (skill.value != "all") {
+    console.log(calculate(parseInt(dist.value), parseInt(elev.value), heavy_foliage, skill.value))
+  } else {
+    values = []
+    for (level of ['purple','green','red','white','blue','gold']) {
+      values.push(calculate(parseInt(dist.value), parseInt(elev.value), heavy_foliage, level))
+    }
+    console.log(values)
+  }
 }
 
 /**************************************************
@@ -98,16 +101,20 @@ function lookUpPar(dist, elev = 0, heavy_foliage = 0, skill = "red") {
  **************************************************/
 
 function addClickHandlers() {
-        const buttons = document.querySelectorAll("button")
-        for (const button of buttons) {
-                switch(button.id) {
-                        case "side-menu-button":
-                                button.addEventListener("click", toggleSideMenu)
-                                break;
-                        default: 
-                                break;
-                }
-        }
+  const buttons = document.querySelectorAll("button")
+  for (const button of buttons) {
+    switch(button.id) {
+      case "side-menu-button":
+        button.addEventListener("click", toggleSideMenu)
+        break;
+      case "lookup-calculate":
+        button.addEventListener("click", lookUpPar)
+        break;
+      default: 
+        break;
+    }
+  }
 
 }
+
 
