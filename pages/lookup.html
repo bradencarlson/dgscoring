@@ -1,0 +1,39 @@
+<div id="lookup" class="margin-left-5p width-90p flex-h">
+  <div id="lookup-page" class="width-50p">
+    <h2 id="lookup-title">Par Lookup</h2>
+    <p id="lookup-description">This utility is for looking
+    up the recommended par for a specific hole based on the
+    guidelines to set the par by effective hole length and
+    foliage set forth by the PDGA. Simply enter the stats
+    for the hole you are playing, and select a skill level.
+    <div id="look-up-form">
+      Skill Level: <select id="skill-select">
+        <option value="all">All</option>
+        <option value="purple">Purple</option>
+        <option value="green">Green</option>
+        <option value="red">Red</option>
+        <option value="white">White</option>
+        <option value="blue">Blue</option>
+        <option value="gold">Gold</option>
+      </select><br>
+      <input id="lookup-distance" type="text" placeholder="Distance in feet" size="20"><br>
+      <input id="lookup-elevation" type="text" placeholder="Elevation gain" size="20"><br>
+      Foliage: <select id="lookup-foliage">
+        <option value="light">Light</option>
+        <option value="heavy">Heavy</option>
+      </select><br>
+      <button id="lookup-calculate">Calculate</button>
+    </div>
+  </div>
+  <div id="lookup-output" class="width-50p">
+    <div id="par-output-box" class="border-solid-black border-radius-10px 
+      margin-left-5p width-90p">
+      <div id="par-output" class="min-height-100px">
+        <h2 id="par-output-label" class="margin-left-5p">Par</h2>
+        <div id="par-result" class="width-100p centered font-size-15em">
+          2
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

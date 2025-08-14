@@ -65,7 +65,9 @@ html, body {
 .centered {
   text-align: center;
 }
-
+.font-size-15em {
+  font-size: 15em;
+}
 .flex-h {
         display: flex;
         flex-direction: horizontal;

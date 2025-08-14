@@ -1,3 +1,7 @@
+/**************************************************
+ * Classes
+ **************************************************/
+
 class SkillLevel {
         constructor(level = "green") {
                 if (level == "purple") {
@@ -51,10 +55,9 @@ class Course {
 }
 
 
-function toggleSideMenu(e) {
-        console.log("Function not implemented yet.")
-        console.log(e.target)
-}
+/**************************************************
+ * Logic
+ **************************************************/
 
 function calculate(dist, elev = 0, heavy_foliage = 0, skill = "red") {
   const s = new SkillLevel(skill)
@@ -86,7 +89,11 @@ function lookUpPar(e) {
   heavy_foliage = foliage.value == "heavy" ? 1 : 0;
 
   if (skill.value != "all") {
-    console.log(calculate(parseInt(dist.value), parseInt(elev.value), heavy_foliage, skill.value))
+    const element = document.querySelector("div[id=par-result]")
+    element.innerText = calculate(parseInt(dist.value), 
+                                  parseInt(elev.value),
+                                  heavy_foliage,
+                                  skill.value)
   } else {
     values = []
     for (level of ['purple','green','red','white','blue','gold']) {
@@ -105,7 +112,6 @@ function addClickHandlers() {
   for (const button of buttons) {
     switch(button.id) {
       case "side-menu-button":
-        button.addEventListener("click", toggleSideMenu)
         break;
       case "lookup-calculate":
         button.addEventListener("click", lookUpPar)
@@ -118,3 +124,23 @@ function addClickHandlers() {
 }
 
 
+/**************************************************
+ * Loading Pages
+ **************************************************/
+
+async function loadLookup() {
+  try {
+    const response = await fetch("./pages/lookup.html")
+
+    if (!response.ok) {
+      throw new Error("Something went wrong loading the lookup page.")
+    }
+
+    const lookup_page = await response.text()
+    const main_element = document.querySelector("div[id=main]")
+    main_element.innerHTML = lookup_page
+    addClickHandlers()
+  } catch (error) {
+    throw new Error(error.message)
+  }
+}
