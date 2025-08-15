@@ -1,0 +1,6 @@
+{ 
+        "name": "University Of Idaho Course",
+        "Location": "University Of Idaho",
+        "distance": [188, 188, 166, 277, 318, 237, 344, 315, 171, 285, 392, 265, 272, 294, 335, 141, 204, 320],
+        "elevation": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+}

@@ -116,6 +116,12 @@ function addClickHandlers() {
       case "lookup-calculate":
         button.addEventListener("click", lookUpPar)
         break;
+      case "lookup-button":
+        button.addEventListener("click", loadLookup)
+        break;
+      case "scorecard-button":
+        button.addEventListener("click", loadPlayCourse)
+        break;
       default: 
         break;
     }
@@ -128,7 +134,7 @@ function addClickHandlers() {
  * Loading Pages
  **************************************************/
 
-async function loadLookup() {
+async function loadLookup(e) {
   try {
     const response = await fetch("./pages/lookup.html")
 
@@ -140,6 +146,27 @@ async function loadLookup() {
     const main_element = document.querySelector("div[id=main]")
     main_element.innerHTML = lookup_page
     addClickHandlers()
+  } catch (error) {
+    throw new Error(error.message)
+  }
+}
+
+async function loadPlayCourse(e) {
+  try {
+    const response = await fetch("./pages/playcourse.html")
+
+    if (!response.ok) {
+      throw new Error("Something went wrong loading the playcourse page.")
+    }
+
+    const playcourse_page = await response.text()
+    /* TODO: modify the page contents to contain information about the course
+     * selected. 
+     */
+
+    const main = document.querySelector("div[id=main]")
+    main.innerHTML = playcourse_page
+
   } catch (error) {
     throw new Error(error.message)
   }
