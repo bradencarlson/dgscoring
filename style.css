@@ -4,99 +4,75 @@ html, body {
 }
 
 /**************************************************
- * Padding Settings
+ * Header/Navbar
  **************************************************/
-.padding-0 {
-        padding: 0px;
+
+.header {
+  background: #fca311;
+  padding: 10px;
 }
-.padding-left-10 {
-        padding-left: 10px;
+
+.header-label {
+  display: flex;
+  flex-direction: horizontal;
+  justify-content: space-between;
+  vertical-align: center;
 }
-.padding-right-10 {
-        padding-right: 10px;
+
+.nav-bar {
+  display: flex;
+  flex-direction: space-between;
+  justify-content: flex-start;
 }
-.padding-top-10 {
-        padding-top: 10px;
-}
-.padding-bottom-10 {
-        padding-bottom: 10px;
-}
-.padding-10 {
-        padding: 10px;
+
+.nav-bar-item {
+  padding-right: 5px;
+  border: none;
+  background: none;
 }
 
 /**************************************************
- * Background Settings
+ * Main
  **************************************************/
-.bg-orange {
-        background: #fca311;
-}
-/**************************************************
- * Size/Position Settings
- **************************************************/
-.full-width {
-  width: 100%;
-}
-.width-90p {
-  width: 90%;
-}
-.width-50p {
-  width: 50%;
-}
-.min-height-100px {
-  min-height: 100px;
-}
-.margin-left-5p {
-  margin-left: 5%;
-}
-.margin-top-5p {
+
+.main {
+  display: flex; 
+  flex-direction: horizontal;
   margin-top: 5%;
 }
-.margin-bottom-5p {
-  margin-bottom: 5%;
-}
-
-/**************************************************
- * Display Settings
- **************************************************/
-.inline {
-        display: inline;
-}
-.centered {
-  text-align: center;
-}
-.font-size-15em {
-  font-size: 15em;
-}
-.flex-h {
-        display: flex;
-        flex-direction: horizontal;
-        justify-content: space-between;
-}
-
-.flex-v {
-        display: flex;
-        flex-direction: vertical;
-}
-
-.align-v {
-        align-items: center;
-}
 
 
 /**************************************************
- * Border Settings
+ * Lookup Par Page
  **************************************************/
-.border-solid-black {
-  border: 1px solid black;
+
+.lookup {
+  margin-left: 5%;
+  width: 90%;
+  display: flex;
+  flex-direction: horizontal;
 }
-.border-radius-10px {
+
+.lookup-input {
+  width: 50%;
+}
+
+.lookup-output {
+  width: 50%;
+}
+
+.output-box {
+  border: 2px solid black;
   border-radius: 10px;
 }
-/**************************************************
- * Buttons Settings
- **************************************************/
-.button-img {
-        width: 16px;
-        height: 16px;
+
+.par-output-label {
+  margin-left: 5%;
+}
+
+.par-result {
+  width: 100%;
+  align: center;
+  font-size: 15em;
+  text-align: center;
 }
