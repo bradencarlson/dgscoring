@@ -8,23 +8,18 @@
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-  <div id="header" class="header">
-    <div id="header-label" class="header-label">
-      <div id="title">Disk Golf</div>
-      <button id="side-menu-button">
-          <img class="button-icon" src="./media/hambuger-menu.svg">
-      </button>
+  <div id="content" class="content">
+    <div id="sidebar" class="sidebar">
+      <div id="title" class="title">Disk Golf</div>
+      <div id="nav-bar" class="nav-bar">
+        <button id="lookup-button" class="nav-bar-item">Look Up Par</button>
+        <button id="scorecard-button" class="nav-bar-item">Scorecard</button>
+      </div>
     </div>
-    <div id="nav-bar" class="nav-bar">
-      <button id="lookup-button" class="nav-bar-item">Look Up Par</button>
-      <button id="scorecard-button" class="nav-bar-item">Scorecard</button>
+    <div id="main" class="main">
+    <!--- This content will be loaded later --->
     </div>
   </div>
-  <div id="sidebar"></div>
-  <div id="main" class="main">
-
-  </div>
-  <div id="footer"></div>
   <script>
     addClickHandlers()
     loadLookup()
