@@ -56,7 +56,7 @@ class Course {
 
 
 /**************************************************
- * Logic
+ * Look Up Logic
  **************************************************/
 
 function calculate(dist, elev = 0, heavy_foliage = 0, skill = "red") {
@@ -122,6 +122,9 @@ function addClickHandlers() {
       case "scorecard-button":
         button.addEventListener("click", loadPlayCourse)
         break;
+      case "course-select-button":
+        button.addEventListener("click", loadCourse)
+        break;
       default: 
         break;
     }
@@ -167,7 +170,20 @@ async function loadPlayCourse(e) {
     const main = document.querySelector("div[id=main]")
     main.innerHTML = playcourse_page
 
+    addClickHandlers()
+
   } catch (error) {
     throw new Error(error.message)
   }
 }
+
+
+/**************************************************
+ * Load Course Logic
+ **************************************************/
+
+function loadCourse(courseID) {
+  const sel = document.querySelector("select[id=course-select-menu]")
+  console.log(sel.value)
+}
+

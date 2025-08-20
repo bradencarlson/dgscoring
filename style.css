@@ -17,6 +17,25 @@ body {
   flex-direction: row;
   justify-content: space-between;
   height: 100%;
+  width: 100%;
+}
+
+@media ( width <= 1000px ) {
+  .content {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+  }
+}
+
+@media ( width <= 700px ) {
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+  }
 }
 
 /**************************************************
@@ -43,7 +62,6 @@ body {
 }
 
 .title {
-  min-width: 75px;
 }
 
 
@@ -63,12 +81,52 @@ body {
   text-align: left;
 }
 
+@media ( width <= 1000px ) {
+
+  .sidebar {
+  }
+
+  .title {
+  }
+
+  .nav-bar-item {
+  }
+}
+
+@media (width <= 700px) {
+
+  .sidebar {
+    flex-direction: row;
+    align-items: baseline;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .title {
+    min-width: fit-content;
+    padding-right: 10px;
+  }
+
+
+  .nav-bar {
+    flex-direction: row;
+  }
+
+  .nav-bar-item {
+    padding-bottom: 5px;
+    padding-left: 10px;
+    border: none;
+    background: none;
+    text-align: left;
+  }
+}
+
 /**************************************************
  * Main
  **************************************************/
 
 .main {
-  margin-top: 5%;
+  min-width: 85%;
 }
 
 /**************************************************
@@ -76,8 +134,8 @@ body {
  **************************************************/
 
 .lookup {
-  margin-left: 5%;
-  width: 90%;
+  max-width: 100%;
+  padding: 2%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -109,137 +167,48 @@ body {
   font-size: 15em;
   text-align: center;
 }
+
+@media (width <= 1000px) {
+  .lookup {
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .lookup-input {
+    width: 100%;
+    height: 50%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .lookup-output {
+    width: 100%;
+    height: 50%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+
+@media (width <= 700px) {
+  .lookup {
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .lookup-input {
+    width: 100%;
+    height: 47%;
+  }
+  .lookup-output {
+    width: 100%;
+    height: 47%;
+  }
+
+}
+
 /**************************************************
  * Play Course Page
  **************************************************/
 
 .play-course {
-  margin-left: 5%;
-  width: 90%;
-}
-
-
-/**************************************************
- * Medium Screen settings
- **************************************************/
-@media ( width <= 1000px ) {
-
-  .content {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    width: 100%;
-  }
-
-  /**************************************************
-   * Sidebar
-   **************************************************/
-
-  .sidebar {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    width: 15%;
-    max-width: 100px;
-    background-color: rgba(252, 163, 17, 0.7);
-  }
-
-  .title {
-  }
-
-
-  .nav-bar {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-  }
-
-  .nav-bar-item {
-    padding-bottom: 5px;
-    padding-left: 5px;
-    border: none;
-    background: none;
-    text-align: left;
-    
-  }
-  /**************************************************
-   * Lookup Page
-   **************************************************/
-
-  .lookup {
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  .lookup-input {
-    width: 100%;
-    height: 47%;
-  }
-  .lookup-output {
-    width: 100%;
-    height: 47%;
-  }
-
-}
-
-/**************************************************
- * Small Screen settings
- **************************************************/
-@media ( width <= 700px ) {
-
-  .content {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    width: 100%;
-  }
-
-  /**************************************************
-   * Sidebar
-   **************************************************/
-
-  .sidebar {
-    padding: 20px;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    width: 100%;
-    max-width: 100%;
-    background-color: rgba(252, 163, 17, 0.7);
-  }
-
-  .title {
-  }
-
-
-  .nav-bar {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-  }
-
-  .nav-bar-item {
-    padding-bottom: 5px;
-    padding-left: 5px;
-    border: none;
-    background: none;
-    text-align: left;
-  }
-  /**************************************************
-   * Lookup Page
-   **************************************************/
-
-  .lookup {
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  .lookup-input {
-    width: 100%;
-    height: 47%;
-  }
-  .lookup-output {
-    width: 100%;
-    height: 47%;
-  }
-
+  padding-top: 25px;
+  padding-left: 25px;
+  width: 100%;
 }
