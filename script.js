@@ -163,9 +163,6 @@ async function loadPlayCourse(e) {
     }
 
     const playcourse_page = await response.text()
-    /* TODO: modify the page contents to contain information about the course
-     * selected. 
-     */
 
     const main = document.querySelector("div[id=main]")
     main.innerHTML = playcourse_page
@@ -182,8 +179,74 @@ async function loadPlayCourse(e) {
  * Load Course Logic
  **************************************************/
 
-function loadCourse(courseID) {
-  const sel = document.querySelector("select[id=course-select-menu]")
-  console.log(sel.value)
+async function loadCourse() {
+  try {
+
+    const sel = document.querySelector("select[id=course-select-menu]")
+    const course_name = sel.value
+
+    if ( !/[a-z-]/.test(course_name) ) {
+      throw new Error("Invalid course name.")
+      return
+    }
+    const page_name = "./courses/" + course_name + ".json"
+
+    console.log("Looking up: " + page_name)
+    const response = await fetch(page_name)
+
+    if (!response.ok) {
+      throw new Error("Something went wrong loading the course.")
+    }
+
+    console.log(response.status)
+
+    html = ""
+
+    console.log("Getting json")
+
+    const course = await response.json()
+
+    console.log(course["name"])
+    console.log(course["distance"])
+    console.log(course["elevation"])
+    console.log(course["foliage"])
+    num_holes = parseInt(course["num_holes"])
+    console.log(num_holes)
+
+    for (let i=0; i<num_holes ; i++ ) {
+      html = html + createHole(i,
+                      course["distance"][i],
+                      course["elevation"][i],
+                      course["foliage"][i])
+    }
+
+    //console.log(html)
+
+    const scorecard = document.querySelector("div[id=scorecard]")
+    scorecard.innerHTML = html
+
+  } catch (error) {
+    throw new Error(error.error)
+  }
 }
 
+function createHole(number, d, e, f) {
+  nums = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18]
+  html = ""
+  if ( nums.includes(number) ) {
+    html += "<div id=\"hole-" + number + "\" class=\"hole\">"
+    const skill_select = document.querySelector("select[id=difficulty-select]")
+    const skill = skill_select.value
+    const par = calculate(d,e,f,skill)
+    html += "<div class=\"par-label\">" + par + "</div>"
+    html += "<div class=\"distance-label\">" + d + "</div>"
+    html += "<div class=\"user-score\">" 
+      html += "<input type=\"text\" class=\"score\"></div>"
+
+    html = html + "</div>"
+    return html
+  } else {
+    return ""
+  }
+}
+      
