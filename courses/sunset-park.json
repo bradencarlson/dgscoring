@@ -1,0 +1,8 @@
+{
+        "name": "Sunset Park",
+        "Location": "Lewiston Idaho",
+        "num_holes": 9,
+        "distance": [308, 447, 204, 233, 298, 252, 313, 183, 230],
+        "elevation": [-40, -20, 15, 50, -30, -40, 10, 0, -10],
+        "foliage": [0, 0, 0, 0, 0, 0, 1, 0, 1]
+}
