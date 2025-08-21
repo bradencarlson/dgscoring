@@ -200,7 +200,7 @@ async function loadCourse() {
 
     console.log(response.status)
 
-    html = ""
+    html = "<div class=\"card\">"
 
     console.log("Getting json")
 
@@ -214,13 +214,13 @@ async function loadCourse() {
     console.log(num_holes)
 
     for (let i=0; i<num_holes ; i++ ) {
-      html = html + createHole(i,
+      html = html + createHole(i+1,
                       course["distance"][i],
                       course["elevation"][i],
                       course["foliage"][i])
     }
 
-    //console.log(html)
+    html += "</div>"
 
     const scorecard = document.querySelector("div[id=scorecard]")
     scorecard.innerHTML = html
@@ -238,6 +238,7 @@ function createHole(number, d, e, f) {
     const skill_select = document.querySelector("select[id=difficulty-select]")
     const skill = skill_select.value
     const par = calculate(d,e,f,skill)
+    html += "<div class=\"number-label\">" + number + "</div>"
     html += "<div class=\"par-label\">" + par + "</div>"
     html += "<div class=\"distance-label\">" + d + "</div>"
     html += "<div class=\"user-score\">" 
