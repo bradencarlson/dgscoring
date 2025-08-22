@@ -185,10 +185,13 @@ async function loadCourse() {
     const sel = document.querySelector("select[id=course-select-menu]")
     const course_name = sel.value
 
+    /* Make sure that nothing weird is happening with the input here */
     if ( !/[a-z-]/.test(course_name) ) {
       throw new Error("Invalid course name.")
       return
     }
+
+    /* Only has the ability to search for local page */
     const page_name = "./courses/" + course_name + ".json"
 
     console.log("Looking up: " + page_name)
@@ -198,26 +201,78 @@ async function loadCourse() {
       throw new Error("Something went wrong loading the course.")
     }
 
-    console.log(response.status)
+    const course = await response.json()
+
+    const key_values = keys(course)
+
+    let num_holes;
+    
+    /* Verify that the file contains all the correct information, and attempt to
+     * filter out anything that is wrong */
+    if ( key_values.includes("num_holes") ) {
+      try {
+        num_holes = parseInt(course["num_holes"])
+      } catch (error) {
+        console.log(error.error)
+        console.log("Setting number of holes to 9")
+        num_holes = 9
+      }
+    } else {
+      num_holes = 9
+    }
+
+    let dist;
+    if ( key_values.includes("distance") ) {
+      if ( course["distance"].length == num_holes ) {
+        dist = course["distance"]
+      } else {
+        console.log("The length of the distance array does not match the number of holes.")
+        return
+      }
+    } else {
+      console.log("No distances were specified, cannot load course.")
+      return
+    }
+
+    let elev;
+    if ( key_values.includes("elevation") ) {
+      if ( course["elevation"].length == num_holes ) {
+        elev = course["elevation"]
+      } else {
+        console.log("The length of the elevation array does not match the number of holes.")
+        return
+      }
+    } else {
+      console.log("No elevations were specified, using zeros.")
+      elev.length = num_holes
+      elev.fill(0)
+    }
+
+    let foliage
+    if ( key_values.includes("foliage") ) {
+      let temp = course["foliage"].filter((num) => (num == 0 || num == 1))
+      if ( temp.length == num_holes ) {
+        foliage = temp
+      } else {
+        console.log("Length of foliage array does not match number of holes, using zeros.")
+        foliage.length = num_holes
+        foliage.fill(0)
+      }
+    } else {
+      console.log("Length of foliage array does not match number of holes, using zeros.")
+      foliage.length = num_holes
+      foliage.fill(0)
+    }
+
+    /* Now that the data has been verified, use it to create the course page */
 
     html = "<div class=\"card\">"
 
-    console.log("Getting json")
-
-    const course = await response.json()
-
-    console.log(course["name"])
-    console.log(course["distance"])
-    console.log(course["elevation"])
-    console.log(course["foliage"])
-    num_holes = parseInt(course["num_holes"])
-    console.log(num_holes)
-
     for (let i=0; i<num_holes ; i++ ) {
       html = html + createHole(i+1,
-                      course["distance"][i],
-                      course["elevation"][i],
-                      course["foliage"][i])
+                      dist[i],
+                      elev[i],
+                      foliage[i])
     }
 
     html += "</div>"
